@@ -16,5 +16,4 @@ video: Ref<VideoModel>
 
 @prop()
 message: string
-
 }

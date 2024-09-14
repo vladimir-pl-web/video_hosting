@@ -41,6 +41,16 @@ async login(dto:AuthDto){
     }
 }
 
+async logout(data: {email :string}){
+    const user = await this.userModel.findOne({ email: String(data.email)})
+    if (!user) throw new UnauthorizedException("User not found")
+    
+    return {
+        user: this.returnUserFields(user),
+        accessToken: await this.issueAccessToken(String(user._id), "1ms")
+    }
+}
+
 async validateUser(dto:AuthDto):Promise<UserModel>{
     const user = await this.userModel.findOne({email: dto.email})
     if(!user) throw new UnauthorizedException("User not found")
@@ -52,12 +62,12 @@ async validateUser(dto:AuthDto):Promise<UserModel>{
 
     
 }
-async issueAccessToken(userId: string){
+async issueAccessToken(userId: string, expireToken: string = "30d"){
 
     const data = {_id:userId}
 
     const accessToken = await this.jwtServise.signAsync(data, {
-        expiresIn: '30d'
+        expiresIn: expireToken
     })
 
     return accessToken
