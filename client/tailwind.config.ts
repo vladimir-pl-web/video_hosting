@@ -9,8 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "#CD313A",
+        red: "#CD3A42",
+        "light+gray": "rgba(198, 198,198,.58)",
+        gray: "#A4A4A4",
+      },
+
+      fontFamily: {
+        noto: ['var(--font-noto)'],
+       roboto: ['var(--font-roboto)'],
       },
     },
   },
