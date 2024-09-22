@@ -1,3 +1,5 @@
+"use client"
+
 import { Dispatch, FC, PropsWithChildren, SetStateAction, createContext, useState } from "react"
 
 interface IData{
@@ -11,19 +13,23 @@ accessToken: string,
 
 interface IContext extends IData{
     setData: null | Dispatch<SetStateAction<IData>>
+    openSidebar: boolean
+    setOpenSidebar: Dispatch<SetStateAction<boolean>>
     }
 
 export const AuthContext= createContext({} as IContext)
 
 
-const AuthProvider:FC<PropsWithChildren<unknown>> = ({children})=>{
+const UserProvider:FC<PropsWithChildren<unknown>> = ({children})=>{
     const[data, setData] = useState<IData>({
-       user:null,
+       user: null,
        accessToken: '' 
     })
-    return <AuthContext.Provider value={{...data, setData}}>
+    const[openSidebar, setOpenSidebar] = useState<boolean>(true)
+
+    return <AuthContext.Provider value={{...data, openSidebar, setOpenSidebar, setData}}>
         {children}
         </AuthContext.Provider>
 }
 
-export default AuthProvider
+export default UserProvider

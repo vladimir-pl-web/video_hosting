@@ -1,8 +1,11 @@
+
 import type { Metadata } from "next";
 import { Noto_Sans_JP, Roboto } from "next/font/google";
 import "./globals.scss";
+import classes from './mainLayout.module.scss';
 import AuthProvider from "./providers/AuthProvider";
-
+import Sidebar from "./components/modules/Sidebar/Sidebar";
+import LayoutContent from "./components/modules/LayoutContent/LayoutContent";
 
 const notoSans = Noto_Sans_JP({
   weight: ['400', '500', '700'],
@@ -30,13 +33,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body
         className={`${notoSans.variable} ${roboto.variable} antialiased`}
       > 
       <AuthProvider>
-      {children}
+        <div className={classes.mainLayout}>
+          <Sidebar />
+          <LayoutContent>
+            {children}
+          </LayoutContent>
+
+        </div>
+
       </AuthProvider>
       </body>
     </html>

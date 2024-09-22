@@ -1,0 +1,7 @@
+
+.list{
+    @apply flex flex-col gap-2 !py-4 !px-0 border-t border-gray !min-w-full;
+}
+.link{
+    @apply flex gap-2;
+}

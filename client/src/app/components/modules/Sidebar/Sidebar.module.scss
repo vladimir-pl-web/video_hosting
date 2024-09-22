@@ -1,3 +1,31 @@
-.sidebar{
+.sidebar {
+  @apply flex flex-col bg-gray/15 w-[300px] h-screen px-4 py-8 relative animate-slideRight;
+}
 
+.profile {
+  @apply flex flex-col pb-8 justify-center items-center;
+
+  .name {
+    @apply font-bold text-center;
+  }
+
+  .place {
+    @apply text-center;
+  }
+
+  .info {
+    @apply flex w-full justify-between py-8;
+
+    .amount {
+      @apply flex flex-col items-center justify-center text-sm;
+
+      & > *:first-child {
+        @apply font-bold;
+      }
+    }
+  }
+}
+
+.btn {
+  @apply top-1 !flex !justify-center !items-center right-1 !rounded-full;
 }
