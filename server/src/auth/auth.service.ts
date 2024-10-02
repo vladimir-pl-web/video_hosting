@@ -44,10 +44,11 @@ async login(dto:AuthDto){
 async logout(data: {email :string}){
     const user = await this.userModel.findOne({ email: String(data.email)})
     if (!user) throw new UnauthorizedException("User not found")
-    
+    await this.issueAccessToken(String(user._id), "1ms")
+
     return {
         user: this.returnUserFields(user),
-        accessToken: await this.issueAccessToken(String(user._id), "1ms")
+        accessToken: ""
     }
 }
 

@@ -1,0 +1,8 @@
+.buttons {
+  @apply gap-4 flex justify-end;
+  .btn {
+    .icon {
+      @apply w-8 h-8;
+    }
+  }
+}

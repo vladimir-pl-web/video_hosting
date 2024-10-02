@@ -6,6 +6,7 @@ import classes from './mainLayout.module.scss';
 import AuthProvider from "./providers/AuthProvider";
 import Sidebar from "./components/modules/Sidebar/Sidebar";
 import LayoutContent from "./components/modules/LayoutContent/LayoutContent";
+import QueryProvider from "./providers/QueryClientProvider";
 
 const notoSans = Noto_Sans_JP({
   weight: ['400', '500', '700'],
@@ -40,6 +41,7 @@ export default function RootLayout({
         className={`${notoSans.variable} ${roboto.variable} antialiased`}
       > 
       <AuthProvider>
+        <QueryProvider>
         <div className={classes.mainLayout}>
           <Sidebar />
           <LayoutContent>
@@ -47,7 +49,7 @@ export default function RootLayout({
           </LayoutContent>
 
         </div>
-
+        </QueryProvider>
       </AuthProvider>
       </body>
     </html>

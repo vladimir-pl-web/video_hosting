@@ -1,7 +1,6 @@
 'use client'
 import { FC } from 'react'
 import classes from './Sidebar.module.scss'
-import { useUser } from '@/app/hooks/useUser'
 import Image from 'next/image'
 import image from '../../../assets/images/panda.svg'
 import Links from './Links/Links'
@@ -10,9 +9,10 @@ import { IconButton, Drawer } from '@material-tailwind/react'
 import { RiCloseLargeFill } from 'react-icons/ri'
 import { RiMenuFold4Line } from 'react-icons/ri'
 import clsx from 'clsx'
+import { useUser } from '../../../hooks/useUser'
 
 const Sidebar: FC = () => {
-  const { openSidebar, setOpenSidebar } = useUser()
+  const { openSidebar, setOpenSidebar, user } = useUser()
 
   const onOpen = () => {
     setOpenSidebar(true)
@@ -22,7 +22,7 @@ const Sidebar: FC = () => {
     setOpenSidebar(false)
   }
 
-  // if (!user) return null
+  if (!user) return null
 
   return (
     <>

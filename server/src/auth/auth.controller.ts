@@ -24,6 +24,5 @@ export class AuthController {
   @Post('register')
   async register(@Body() dto:AuthDto){
     return this.authService.register(dto)
-
   }
 }
